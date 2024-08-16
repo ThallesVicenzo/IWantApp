@@ -2,9 +2,8 @@
 
 public class Product : Entity
 {
-    public string Name { get; set; }
-    public Category category { get; set; }
-    public string Description { get; set; }
-    public bool HasStock { get; set; }
+    public required Category category { get; set; }
+    public required string Description { get; set; }
+    public required bool HasStock { get; set; }
 
 }
