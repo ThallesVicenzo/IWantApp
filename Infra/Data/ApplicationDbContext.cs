@@ -14,6 +14,8 @@ public class ApplicationDbContext : DbContext
     {
         modelBuilder.Entity<Product>().Property(propertyExpression => propertyExpression.Name).IsRequired();
         modelBuilder.Entity<Product>().Property(propertyExpression => propertyExpression.Description).HasMaxLength(255);
+
+        modelBuilder.Entity<Category>().Property(propertyExpression => propertyExpression.Name).IsRequired();
     }
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
