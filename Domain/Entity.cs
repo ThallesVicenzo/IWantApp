@@ -8,9 +8,9 @@ public abstract class Entity
     }
 
     public Guid Id { get; set; }
-    public required string  Name { get; set; }
-    public required string CreatedBy { get; set; }
-    public required DateTime CreatedOn { get; set; }
-    public required DateTime EditedOn { get; set; }
-    public required string EditedBy { get; set; }
+    public required string Name { get; set; }
+    public string? CreatedBy { get; set; }
+    public DateTime? CreatedOn { get; set; }
+    public DateTime? EditedOn { get; set; }
+    public string? EditedBy { get; set; }
 }
