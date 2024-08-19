@@ -9,20 +9,10 @@
     }
   },
   "profiles": {
-    "http": {
+    "IWantApp": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "http://localhost:5122",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "https": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:7034;http://localhost:5122",
+      "applicationUrl": "https://localhost:3001;http://localhost:3000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
