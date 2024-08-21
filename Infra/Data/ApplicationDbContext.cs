@@ -1,5 +1,6 @@
 ﻿namespace IWantApp.Infra.Data;
 
+using Flunt.Notifications;
 using IWantApp.Domain.Products;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,9 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+        modelBuilder.Ignore<Notification>();
+
         modelBuilder.Entity<Product>().Property(propertyExpression => propertyExpression.Name).IsRequired();
         modelBuilder.Entity<Product>().Property(propertyExpression => propertyExpression.Description).HasMaxLength(255);
 
