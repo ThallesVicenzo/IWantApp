@@ -1,3 +1,3 @@
 ﻿namespace IWantApp.Endpoints.Categories;
 
-public record CategoryRequest(string Name, bool IsActive);
+public record CategoryRequest(string Name, bool Active);

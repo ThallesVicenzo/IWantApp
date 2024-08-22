@@ -11,7 +11,7 @@ public class CategoryPost
 
     public static IResult Action(CategoryRequest categoryRequest, ApplicationDbContext context)
     {
-        var category = new Category(categoryRequest.Name, "Test", "Test");
+        var category = new Category(categoryRequest.Name, "Teste", "Test2");
 
         if (!category.IsValid)
             return Results.ValidationProblem(category.Notifications.ConvertToProblemDetails());
