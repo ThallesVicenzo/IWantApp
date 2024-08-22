@@ -16,8 +16,10 @@ public class CategoryPut
         if (category == null)
             return Results.NotFound("Category not found!");
 
-        category.Name = categoryRequest.Name;
-        category.IsActive = categoryRequest.IsActive;
+        category.EditInfo(categoryRequest.Name, categoryRequest.Active);
+
+        if (!category.IsValid)
+            return Results.ValidationProblem(category.Notifications.ConvertToProblemDetails());
 
         context.SaveChanges();
 
