@@ -13,7 +13,7 @@ public class EmployeeGetAll
     public static Delegate Handle => Action;
 
     [Authorize(Policy = "EmployeePolicy")]
-    public static IResult Action(int? page, int? rows, QueryAllUsersWithClaimName query)
+    public static async Task<IResult> Action(int? page, int? rows, QueryAllUsersWithClaimName query)
     {
         if (page == null)
             return Results.BadRequest("Page can not be null!");
@@ -24,6 +24,8 @@ public class EmployeeGetAll
         if (rows > 10)
             return Results.BadRequest("Rows value can not be more than 10");
 
-        return Results.Ok(query.Execute(page.Value, rows.Value));
+        var result = await query.Execute(page.Value, rows.Value);
+
+        return Results.Ok();
     }
 }
