@@ -5,7 +5,7 @@ namespace IWantApp.Domain.Products;
 public class Category : Entity
 {
     public bool IsActive { get; private set; }
-    public string Name { get; private set; }
+    public new string Name { get; private set; }
 
     public Category(string name, string createdBy, string editedBy)
     {
