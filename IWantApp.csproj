@@ -20,6 +20,7 @@
 		<Using Include="Microsoft.IdentityModel.Tokens" />
 		<Using Include="System.Text" />
 		<Using Include="System.IdentityModel.Tokens.Jwt" />
+		<Using Include="Microsoft.AspNetCore.Diagnostics" />
 		
 		<Using Include="IWantApp.Domain.Products" />
 		<Using Include="IWantApp.Infra.Data" />
