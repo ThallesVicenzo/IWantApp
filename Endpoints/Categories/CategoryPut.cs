@@ -1,8 +1,4 @@
-﻿using IWantApp.Infra.Data;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-
-namespace IWantApp.Endpoints.Categories;
+﻿namespace IWantApp.Endpoints.Categories;
 
 public class CategoryPut
 {
