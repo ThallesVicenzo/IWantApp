@@ -1,5 +1,8 @@
+using IWantApp.Endpoints.Products;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["ConnectionString:IWantDb"]);
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
     options.Password.RequireNonAlphanumeric = false;
@@ -56,6 +59,9 @@ app.MapMethods(CategoryPut.Template, CategoryPut.Methods, CategoryPut.Handle);
 app.MapMethods(EmployeePost.Template, EmployeePost.Methods, EmployeePost.Handle);
 app.MapMethods(EmployeeGetAll.Template, EmployeeGetAll.Methods, EmployeeGetAll.Handle);
 
+app.MapMethods(ProductPost.Template, ProductPost.Methods, ProductPost.Handle);
+app.MapMethods(ProductGetAll.Template, ProductGetAll.Methods, ProductGetAll.Handle);
+
 app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle);
 
 app.UseExceptionHandler("/error");
@@ -69,7 +75,7 @@ app.Map("/error", (HttpContext http) =>
             return Results.Problem(title: "Database out", statusCode: 500);
     }
 
-    return Results.Problem(title: "An error ocurred.", statusCode: 500);
+    return Results.Problem(title: error?.Message, statusCode: 500);
 });
 
 
