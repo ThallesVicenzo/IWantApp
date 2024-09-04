@@ -1,11 +1,44 @@
-﻿namespace IWantApp.Domain.Products;
+﻿using Flunt.Validations;
+
+namespace IWantApp.Domain.Products;
 
 public class Product : Entity
 {
-    public required Category category { get; set; }
-    public required Guid CategoryId { get; set; }
-    public required string Description { get; set; }
-    public required bool HasStock { get; set; }
-    public bool isActive { get; set; } = true;
+    public Category? Category { get; private set; }
+    public Guid? CategoryId { get; private set; }
+    public string? Description { get; private set; }
+    public new string? Name { get; private set; }
+    public bool? HasStock { get; private set; }
+    public bool? IsActive { get; private set; } = true;
 
+    public Product() { }
+
+    public Product(string name, Category category, string description, bool hasStock, string createdBy)
+    {
+        Name = name;
+        Category = category;
+        Description = description;
+        HasStock = hasStock;
+
+        CreatedBy = createdBy;
+        EditedBy = createdBy;
+        CreatedOn = DateTime.Now;
+        EditedOn = DateTime.Now;
+
+        Validate();
+    }
+
+    private void Validate()
+    {
+        var contract = new Contract<Product>()
+            .IsNotNullOrEmpty(Name, "Name")
+            .IsGreaterOrEqualsThan(Name, 3, "Name")
+            .IsNotNull(Category, "Category")
+            .IsNotNullOrEmpty(Description, "Description")
+            .IsGreaterOrEqualsThan(Description, 3, "Description")
+            .IsNotNullOrEmpty(CreatedBy, "Createdy")
+            .IsNotNullOrEmpty(EditedBy, "EditedBy");
+
+        AddNotifications(contract);
+    }
 }
