@@ -10,15 +10,17 @@ public class Product : Entity
     public new string? Name { get; private set; }
     public bool? HasStock { get; private set; }
     public bool? IsActive { get; private set; } = true;
+    public decimal Price { get; private set; }
 
-    public Product() { }
+    private Product() { }
 
-    public Product(string name, Category category, string description, bool hasStock, string createdBy)
+    public Product(string name, Category category, string description, bool hasStock, decimal price, string createdBy)
     {
         Name = name;
         Category = category;
         Description = description;
         HasStock = hasStock;
+        Price = price;
 
         CreatedBy = createdBy;
         EditedBy = createdBy;
@@ -31,11 +33,12 @@ public class Product : Entity
     private void Validate()
     {
         var contract = new Contract<Product>()
-            .IsNotNullOrEmpty(Name, "Name")
-            .IsGreaterOrEqualsThan(Name, 3, "Name")
+            .IsNotNullOrEmpty(Name, "Name", "Name should not be null!")
+            .IsGreaterOrEqualsThan(Name, 3, "Name", "Name should not be less than 3")
             .IsNotNull(Category, "Category", "Category not found!")
             .IsNotNullOrEmpty(Description, "Description", "Description should not be null!")
             .IsGreaterOrEqualsThan(Description, 3, "Description", "Description should not be less than 3")
+            .IsGreaterOrEqualsThan(Price, 1, "Price")
             .IsNotNullOrEmpty(CreatedBy, "Createdy", "Created by not found!")
             .IsNotNullOrEmpty(EditedBy, "EditedBy", "Editedby by not found!");
 
