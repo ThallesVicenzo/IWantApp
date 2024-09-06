@@ -33,11 +33,11 @@ public class Product : Entity
         var contract = new Contract<Product>()
             .IsNotNullOrEmpty(Name, "Name")
             .IsGreaterOrEqualsThan(Name, 3, "Name")
-            .IsNotNull(Category, "Category")
-            .IsNotNullOrEmpty(Description, "Description")
-            .IsGreaterOrEqualsThan(Description, 3, "Description")
-            .IsNotNullOrEmpty(CreatedBy, "Createdy")
-            .IsNotNullOrEmpty(EditedBy, "EditedBy");
+            .IsNotNull(Category, "Category", "Category not found!")
+            .IsNotNullOrEmpty(Description, "Description", "Description should not be null!")
+            .IsGreaterOrEqualsThan(Description, 3, "Description", "Description should not be less than 3")
+            .IsNotNullOrEmpty(CreatedBy, "Createdy", "Created by not found!")
+            .IsNotNullOrEmpty(EditedBy, "EditedBy", "Editedby by not found!");
 
         AddNotifications(contract);
     }
