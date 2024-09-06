@@ -74,6 +74,8 @@ app.Map("/error", (HttpContext http) =>
     {
         if (error is SqlException)
             return Results.Problem(title: "Database out", statusCode: 500);
+        if (error is BadHttpRequestException)
+            return Results.Problem(title: "Error to convert data to other type. See all the info sent.", statusCode: 400);
     }
 
     return Results.Problem(title: error?.Message, statusCode: 500);
