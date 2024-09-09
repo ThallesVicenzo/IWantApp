@@ -7,7 +7,11 @@ public class TokenPost
     public static Delegate Handle => Action;
 
     [AllowAnonymous]
-    public static IResult Action(LoginRequest loginRequest, UserManager<IdentityUser> userManager, IConfiguration configuration, ILogger<TokenPost> logger)
+    public static IResult Action(LoginRequest loginRequest,
+        UserManager<IdentityUser> userManager,
+        IConfiguration configuration, ILogger<TokenPost> logger,
+        IWebHostEnvironment environment
+        )
     {
 
         logger.LogInformation("Getting token");
@@ -37,7 +41,9 @@ public class TokenPost
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
             Audience = configuration["JwtBearerTokenSettings:Audience"],
             Issuer = configuration["JwtBearerTokenSettings:Issuer"],
-            Expires = DateTime.UtcNow.AddMinutes(70),
+            Expires = environment.IsDevelopment() || environment.IsStaging()
+            ? DateTime.UtcNow.AddYears(1)
+            : DateTime.UtcNow.AddMinutes(2),
         };
 
         var tokenHandler = new JwtSecurityTokenHandler();
