@@ -62,6 +62,7 @@ app.MapMethods(EmployeeGetAll.Template, EmployeeGetAll.Methods, EmployeeGetAll.H
 app.MapMethods(ProductPost.Template, ProductPost.Methods, ProductPost.Handle);
 app.MapMethods(ProductGetAll.Template, ProductGetAll.Methods, ProductGetAll.Handle);
 app.MapMethods(ProductGetById.Template, ProductGetById.Methods, ProductGetById.Handle);
+app.MapMethods(ProductGetShowcase.Template, ProductGetShowcase.Methods, ProductGetShowcase.Handle);
 
 app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle);
 
