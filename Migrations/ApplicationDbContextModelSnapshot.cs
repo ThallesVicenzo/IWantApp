@@ -82,10 +82,10 @@ namespace IWantApp.Migrations
                     b.Property<DateTime?>("EditedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool?>("HasStock")
+                    b.Property<bool>("HasStock")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsActive")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")

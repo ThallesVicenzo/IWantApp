@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IWantApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240904190948_AddCategoryAndProduct")]
-    partial class AddCategoryAndProduct
+    [Migration("20240909181913_CategoryAndProduct")]
+    partial class CategoryAndProduct
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,16 +85,19 @@ namespace IWantApp.Migrations
                     b.Property<DateTime?>("EditedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool?>("HasStock")
+                    b.Property<bool>("HasStock")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsActive")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(10,2)");
 
                     b.HasKey("Id");
 

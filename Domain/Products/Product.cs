@@ -8,8 +8,8 @@ public class Product : Entity
     public Guid? CategoryId { get; private set; }
     public string? Description { get; private set; }
     public new string? Name { get; private set; }
-    public bool? HasStock { get; private set; }
-    public bool? IsActive { get; private set; } = true;
+    public bool HasStock { get; private set; }
+    public bool IsActive { get; private set; } = true;
     public decimal Price { get; private set; }
 
     private Product() { }
