@@ -9,6 +9,7 @@
 	<ItemGroup>
 		<Using Include="Dapper" />
 		<Using Include="Flunt.Notifications" />
+		<Using Include="Flunt.Validations" />
 		<Using Include="Microsoft.Data.SqlClient" />
 		<Using Include="Microsoft.AspNetCore.Identity" />
 		<Using Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
