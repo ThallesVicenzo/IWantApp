@@ -23,6 +23,7 @@
 		<Using Include="Microsoft.AspNetCore.Diagnostics" />
 		
 		<Using Include="IWantApp.Domain.Products" />
+		<Using Include="IWantApp.Domain.Users" />
 		<Using Include="IWantApp.Infra.Data" />
 		<Using Include="IWantApp.Endpoints.Categories" />
 		<Using Include="IWantApp.Endpoints.Employees" />
