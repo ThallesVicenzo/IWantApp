@@ -17,7 +17,7 @@ public class ProductGetShowcase
         var queryBase = context.Products.AsNoTracking().Include(p => p.Category)
             .Where(p => p.HasStock && p.Category!.IsActive);
 
-        if (orderBy == "Placeholder")
+        if (orderBy == "name")
             queryBase = queryBase.OrderBy(p => p.Name);
         else if (orderBy == "price")
             queryBase = queryBase.OrderBy(p => p.Price);
