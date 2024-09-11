@@ -8,14 +8,21 @@ public class OrderPost
     public static string[] Methods => new string[] { HttpMethod.Post.ToString() };
     public static Delegate Handle => Action;
 
+    [Authorize(Policy = "CpfPolicy")]
     public static async Task<IResult> Action(OrderRequest orderRequest, HttpContext http, ApplicationDbContext context)
     {
         var clientId = http.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value;
         var clientName = http.User.Claims.First(c => c.Type == "Name").Value;
 
-        var productsFound = context.Products.Where(p => orderRequest.ProductIds.Contains(p.Id)).ToList();
+        List<Product>? productsFound = null;
 
-        var order = new Order(clientId, clientName, productsFound, orderRequest.DeliveryAddress);
+        if (orderRequest.ProductIds != null || orderRequest.ProductIds?.Count == 0)
+            productsFound = context.Products.Where(p => orderRequest.ProductIds.Contains(p.Id)).ToList();
+
+        var order = new Order(clientId, clientName, productsFound!, orderRequest.DeliveryAddress);
+
+        if (!order.IsValid)
+            return Results.ValidationProblem(order.Notifications.ConvertToProblemDetails());
 
         await context.Orders.AddAsync(order);
         await context.SaveChangesAsync();
