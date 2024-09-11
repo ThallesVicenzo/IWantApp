@@ -13,7 +13,7 @@ public class ProductGetById
         if (product == null)
             return Results.NotFound();
 
-        var result = new ProductResponse(product.Name!, product.Category!.Name, product.Description!, product.HasStock, product.Price, product.IsActive);
+        var result = new ProductResponse(product.Id, product.Name!, product.Category!.Name, product.Description!, product.HasStock, product.Price, product.IsActive);
 
         return Results.Ok(result);
     }
