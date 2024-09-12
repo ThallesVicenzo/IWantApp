@@ -1,6 +1,4 @@
-﻿using IWantApp.Domain.Orders;
-
-namespace IWantApp.Infra.Data;
+﻿namespace IWantApp.Infra.Data;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<IdentityUser>(options)
 {
