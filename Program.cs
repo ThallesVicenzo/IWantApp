@@ -68,7 +68,7 @@ app.MapMethods(ProductGetById.Template, ProductGetById.Methods, ProductGetById.H
 app.MapMethods(ProductGetShowcase.Template, ProductGetShowcase.Methods, ProductGetShowcase.Handle);
 
 app.MapMethods(OrderPost.Template, OrderPost.Methods, OrderPost.Handle);
-app.MapMethods(OrderGetAll.Template, OrderGetAll.Methods, OrderGetAll.Handle);
+app.MapMethods(OrderGet.Template, OrderGet.Methods, OrderGet.Handle);
 
 app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle);
 
